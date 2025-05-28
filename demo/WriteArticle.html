@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <div id="write-article">
-        <input type="text" v-model="date.content">
+        <input type="text" v-model="data.content">
+        <button @click="add">添加</button>
+        <ul>
+            <li v-for="(value.index) in data.list">
+                {{value}}
+            </li>
+        </ul>
     </div>
     <script type="module">
-        import {createApp,reactive} from './vue.esm-browser.js'
+        import { createApp, reactive } from './vue.esm-browser.js'
         createApp({
-            setup(){
-                const data=reactive({
-                    content :"www.bilibili.com",
-                    list:["b站","bilibili.com"],
+            setup() {
+                const data = reactive({
+                    content: "www.bilibili.com",
+                    list: ["b站", "bilibili.com"],
                 })
+                const add = () => {
+                    data.list.push(data.content)
+                    console.log(data.list)
+                }
                 return {
-                    data
+                    data,
+                    add
                 }
             }
         }).mount("#write-article")
 
     </script>
 </body>
+
 </html>
