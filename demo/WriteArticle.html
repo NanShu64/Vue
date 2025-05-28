@@ -11,11 +11,16 @@
     <div id="write-article">
         <input type="text" v-model="data.content">
         <button @click="add">添加</button>
+        <hr>
+        <br>
+        {{ data.list.length }}
         <ul>
-            <li v-for="(value.index) in data.list">
-                {{value}}
+            <li v-for=" (value,index) in data.list ">
+                <button @click="del(index)">删除</button>
+                {{ value }}
             </li>
         </ul>
+        <button @click="clear">清除</button>
     </div>
     <script type="module">
         import { createApp, reactive } from './vue.esm-browser.js'
@@ -29,9 +34,17 @@
                     data.list.push(data.content)
                     console.log(data.list)
                 }
+                const del = (index) => {
+                    data.list.splice(index, 1)//splice(要删除元素的索引位置, 要删除的元素数量)
+                }
+                const clear = () => {
+                    data.list=[]//splice(要删除元素的索引位置, 要删除的元素数量)
+                }
                 return {
                     data,
-                    add
+                    add,
+                    del,
+                    clear
                 }
             }
         }).mount("#write-article")
