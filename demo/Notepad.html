@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div id="write-article">
+    <div id="notepad">
         <input type="text" v-model="data.content">
         <button @click="add">添加</button>
         <hr>
@@ -47,7 +47,7 @@
                     clear
                 }
             }
-        }).mount("#write-article")
+        }).mount("#notepad")
 
     </script>
 </body>
