@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="js/axios.min.js"></script>
+    <script src="axios.min.js"></script>
 </head>
+
 <body>
     <div id="label-search">
         <select v-model="data.type">
@@ -25,7 +27,7 @@
     </div>
 
     <script type="module">
-        import { createApp, reactive } from './js/vue.esm-browser.js'
+        import { createApp, reactive } from './vue.esm-browser.js'
 
         createApp({
             setup() {
@@ -47,8 +49,8 @@
                         axios.get(`http://127.0.0.1/article/get/id/${id}`).then(response => {
                             console.log("get.data:", response.data)
 
-                            if(response.data.status == "success"){
-                                if(response.data.data){
+                            if (response.data.status == "success") {
+                                if (response.data.data) {
                                     data.list.push(response.data.data) //push 向数组末尾添加一个或多个元素
                                 }
                             }
@@ -57,7 +59,7 @@
                         })
                     } else if (data.type == "2") {
                         //参数
-                        let param  = { 
+                        let param = {
                             title: data.content
                         }
 
@@ -65,8 +67,8 @@
                         axios.post('http://127.0.0.1/article/postJson/search', param).then(response => {
                             console.log("postJson.data:", response.data)
 
-                            if(response.data.status == "success"){
-                                for(let i=0; i<response.data.data.length; i++){
+                            if (response.data.status == "success") {
+                                for (let i = 0; i < response.data.data.length; i++) {
                                     data.list.push(response.data.data[i]) //push 向数组末尾添加一个或多个元素
                                 }
                             }
@@ -84,4 +86,5 @@
         }).mount("#label-search")
     </script>
 </body>
+
 </html>
