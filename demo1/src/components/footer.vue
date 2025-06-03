@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 const props=defineProps({
     user:Number,
     url:{
@@ -16,7 +16,22 @@ const props=defineProps({
 <h3>Footer</h3>
 {{ props.user }}
 </template>
+<style scoped>
+</style> -->
 
+
+
+<script setup>
+    
+</script>
+
+<template>
+    <h3>footer.vue - 子组件</h3>
+
+    <!-- 具名插槽 -->
+    <slot name="url" title="bilibili",user="www.bilibili.com"/>
+    <slot name="user" />
+</template>
 
 <style scoped>
 

@@ -52,37 +52,233 @@ import { reactive } from 'vue';
 
 <style scoped></style> -->
 
-<script setup>
-  import { reactive,ref } from 'vue'
-
+<!-- <script setup> -->
+<!-- import { reactive,ref } from 'vue'
   //导入子组件
   import Header from "./components/header.vue"
 
   //响应式数据
-  const web = reactive({
-    name: "bilibili",
-    url: 'bilibili.com'
+   const web = reactive({
+     name: "bilibili",
+     url: 'bilibili.com'
+   })
+
+   const user = ref(0)
+
+  //子传父
+   const emitsWeb = (data) => {
+     console.log("emitsWeb:",data)
+    web.url = data.url
+   }
+
+   const emitsUser = (data) => {
+    console.log("emitsUser:",data)
+    user.value += data
+   }
+
+  const emitsGetWeb=(data)=>{
+console.log(data)
+ web.url=data.url
+  }
+
+  const emitsUserAdd=(data)=>{
+    console.log(data)
+    user.value+=data
+  } -->
+<!-- </script> -->
+
+<!-- <template> -->
+<!-- 子传父 -->
+<!-- <Header @getWeb="emitsGetweb" @userAdd="emitsUserAdd" /> -->
+<!-- {{ web.url }} - {{ user }} -->
+<!-- <Header @web="emitsWeb" @user="emitsUser" /> -->
+<!-- </template>
+
+<style scoped></style> -->
+
+<!-- <script setup>
+import { provide, ref } from 'vue'
+
+//导入子组件
+import Header from "./components/header.vue"
+
+// const web = {
+//      name: "bilibili",
+//      url: 'bilibili.com'
+//    }
+//provide用于父组件将 数据 提供给所有子组件
+/*
+  若使用了provide和inject来进行数据传递,
+  则一般不需要再使用defineProps
+*/
+// provide("provideWeb",web)
+provide("provideWeb",{name:"bilibili",url:"www.bilibili.com"})
+
+//传递响应式数据
+const user = ref(0)
+provide("provideUser",user)
+
+//添加用户
+const userAdd = () => {
+  user.value++
+}
+//用于父组件将 函数 提供给所有子组件
+provide("provideFuncUserAdd",userAdd)
+</script> -->
+<!-- <template>
+  <h3>App.vue-Top组件</h3>
+
+  {{ user }} -->
+
+<!-- 子组件 -->
+<!-- <Header />
+</template> -->
+
+
+<!-- <style scoped></style> -->
+
+
+
+<!-- 插槽(slot)
+是指可以在父组件内自定义模板片段,
+在子组件中可以将定义的模板片段插入到子组件的特定位置 -->
+<!-- / -->
+<!-- 
+<template>
+  <h3>App.vue</h3>
+
+  <Header /> -->
+  <!-- 匿名插槽 -->
+  <!-- <Header>
+    <a href="http://dengruicode.com">邓瑞编程</a>
+  </Header> -->
+
+  <!-- 具名插槽 -->
+  <!-- <Footer>
+    <template v-slot:url>
+      <a href="http://www.dengruicode.com">网址</a>
+    </template>
+
+    <!-- v-slot:user 简写 #user -->
+    <!-- <template #user>
+      1000 -->
+
+
+      <!-- v-slot:user 简写 #user
+      作用域插槽
+      子组件将url和title数据传递给 name="user" 的插槽,
+      父组件通过 #user="data" 来接收这些数据
+      <template #user="data">
+        1000 {{ data.url }} {{ data.title }}
+      </template> -->
+      <!-- 解构 -->
+      <!-- <template #user="{url,title}">
+        1000 {{ url }} {{ title }}
+      </template> -->
+
+    <!-- </template> -->
+ <!-- </Footer>
+
+</template>
+
+<style scoped></style> -->
+
+<!-- <script setup>
+  import { onMounted, onUpdated, ref } from 'vue'
+
+  //在组件成功挂载到DOM并完成首次渲染后调用
+  onMounted(() => {
+    console.log("onMounted")
+  })
+
+  //在组件更新之后调用
+  onUpdated(() => {
+    console.log("onUpdated:",user.value)
   })
 
   const user = ref(0)
+  console.log("user:",user.value)
+</script>
 
-  //子传父
-  const emitsWeb = (data) => {
-    console.log("emitsWeb:",data)
-    web.url = data.url
-  }
+<template>
+  <h3>App.vue</h3>
 
-  const emitsUser = (data) => {
-    console.log("emitsUser:",data)
-    user.value += data
+  {{ user }}
+
+  <button @click="user++">添加用户</button>
+</template>
+
+<style scoped>
+
+</style> -->
+
+<!-- <script setup>
+  import { reactive, toRef, toRefs } from 'vue'
+
+  /*
+  let {name,url} = reactive({
+    name:"邓瑞编程",
+    url:"dengruicode.com"
+  })
+  */
+  let web = reactive({
+    name:"邓瑞编程",
+    url:"dengruicode.com"
+  })
+
+  //toRefs将一个响应式对象的所有属性转换为ref对象
+  //let {name,url} = toRefs(web)
+
+  //toRef将一个响应式对象的某个属性转换为ref变量
+  let url = toRef(web, "url")
+
+  const setUrl = () => {
+    console.log(url)
+    url.value = "www.dengruicode.com"
   }
 </script>
 
 <template>
-  <!-- 子传父 -->
-  <Header @web="emitsWeb" @user="emitsUser" />
+  {{ url }}
 
-  {{ web.url }} - {{ user }}
+  <button @click="setUrl">设置网址</button>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style> -->
+
+
+
+<!-- <script setup>
+    import { useWebStore } from './stores/web.js'
+
+    const webStore = useWebStore()
+    
+    console.log("webStore.web:",webStore.web)
+    console.log("webStore.users:",webStore.users)
+</script>
+
+<template>
+    {{ webStore.web.url }}
+
+    {{ webStore.users }}
+
+    <button @click="webStore.userAdd" >添加用户</button>
+</template>
+
+<style scoped>
+
+</style> -->
+
+<script setup>
+
+</script>
+
+<template>
+  <router-view />
+</template>
+
+<style scoped>
+
+</style>
