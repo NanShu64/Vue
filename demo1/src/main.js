@@ -24,14 +24,14 @@ router.beforeEach((to, from, next) => {
     console.log("to:",to) //即将进入的路由的信息
     console.log("from:",from) //当前即将离开的路由信息
 
-    // next()
+next()
 
     
-        if(to.name == "history"){
-            next(false) //拦截
-        }else{
-            next() //继续
-        }
+        // if(to.name == "history"){
+        //     next(false) //拦截
+        // }else{
+        //     next() //继续
+        // }
     
 })
 app.mount('#app')
