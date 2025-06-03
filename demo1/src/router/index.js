@@ -39,6 +39,11 @@ import { createRouter, createWebHashHistory, createWebHistory } from "vue-router
 	            }
 	        ]
 	    },
+        {
+            path:"/svip",// http://localhost:5173/svip
+            // redirect:"/vip",//重定向
+            redirect: { name:'member', params: { id: 200, name: 'David' }}
+        },
 	]
 
 	const router = createRouter({
