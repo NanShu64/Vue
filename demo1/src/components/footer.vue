@@ -26,11 +26,11 @@ const props=defineProps({
 </script>
 
 <template>
-    <h3>footer.vue - 子组件</h3>
-
+    <!-- <h3>footer.vue - 子组件</h3> -->
+    <h3>footer</h3>
     <!-- 具名插槽 -->
-    <slot name="url" title="bilibili",user="www.bilibili.com"/>
-    <slot name="user" />
+    <!-- <slot name="url" title="bilibili",user="www.bilibili.com"/>
+    <slot name="user" /> -->
 </template>
 
 <style scoped>

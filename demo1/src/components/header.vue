@@ -54,10 +54,10 @@ provide("provideUrl","dengruicode.com")
 </script>
 
 <template>
-    <h3>header.vue - 子组件</h3>
-
+    <!-- <h3>header.vue - 子组件</h3> -->
+    <h3>header</h3>
     <!-- 匿名插槽 slot -->
-    <slot/>
+    <!-- <slot/> -->
 </template>
 
 <style scoped>
