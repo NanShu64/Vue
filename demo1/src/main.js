@@ -5,6 +5,10 @@ import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import App from './App.vue'
 import router from './router'
+//整体导入 ElementPlus 组件库
+import ElementPlus from 'element-plus' //导入 ElementPlus 组件库的所有模块和功能 
+import 'element-plus/dist/index.css' //导入 ElementPlus 组件库所需的全局 CSS 样式
+
 // const pinia= createPinia()
 // //将插件添加到 pinia 实例上
 // pinia.use(piniaPluginPersistedstate)
@@ -18,20 +22,20 @@ createApp(App).use(router).mount('#app')
 
 const app = createApp(App)//定义一个常量app
 app.use(router)
-
+app.use(ElementPlus) //将 ElementPlus 插件注册到 Vue 应用中
 //全局前置守卫
 router.beforeEach((to, from, next) => {
-    console.log("to:",to) //即将进入的路由的信息
-    console.log("from:",from) //当前即将离开的路由信息
+    console.log("to:", to) //即将进入的路由的信息
+    console.log("from:", from) //当前即将离开的路由信息
 
-next()
+    next()
 
-    
-        // if(to.name == "history"){
-        //     next(false) //拦截
-        // }else{
-        //     next() //继续
-        // }
-    
+
+    // if(to.name == "history"){
+    //     next(false) //拦截
+    // }else{
+    //     next() //继续
+    // }
+
 })
 app.mount('#app')

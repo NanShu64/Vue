@@ -148,36 +148,36 @@ provide("provideFuncUserAdd",userAdd)
   <h3>App.vue</h3>
 
   <Header /> -->
-  <!-- 匿名插槽 -->
-  <!-- <Header>
+<!-- 匿名插槽 -->
+<!-- <Header>
     <a href="http://dengruicode.com">邓瑞编程</a>
   </Header> -->
 
-  <!-- 具名插槽 -->
-  <!-- <Footer>
+<!-- 具名插槽 -->
+<!-- <Footer>
     <template v-slot:url>
       <a href="http://www.dengruicode.com">网址</a>
     </template>
 
     <!-- v-slot:user 简写 #user -->
-    <!-- <template #user>
+<!-- <template #user>
       1000 -->
 
 
-      <!-- v-slot:user 简写 #user
+<!-- v-slot:user 简写 #user
       作用域插槽
       子组件将url和title数据传递给 name="user" 的插槽,
       父组件通过 #user="data" 来接收这些数据
       <template #user="data">
         1000 {{ data.url }} {{ data.title }}
       </template> -->
-      <!-- 解构 -->
-      <!-- <template #user="{url,title}">
+<!-- 解构 -->
+<!-- <template #user="{url,title}">
         1000 {{ url }} {{ title }}
       </template> -->
 
-    <!-- </template> -->
- <!-- </Footer>
+<!-- </template> -->
+<!-- </Footer>
 
 </template>
 
@@ -271,7 +271,7 @@ provide("provideFuncUserAdd",userAdd)
 
 </style> -->
 
-<script setup>
+<!-- <script setup>
 
 </script>
 
@@ -281,4 +281,34 @@ provide("provideFuncUserAdd",userAdd)
 
 <style scoped>
 
-</style>
+</style> -->
+
+<script setup>
+
+</script>
+
+<template>
+  <h3>按钮</h3>
+  <el-button>默认按钮</el-button>
+  <el-button type="primary">主要按钮</el-button>
+  <el-button type="success">成功按钮</el-button>
+  <el-button type="info">信息按钮</el-button>
+  <el-button type="warning">警告按钮</el-button>
+  <el-button type="danger">危险按钮</el-button>
+
+  <hr>
+  <h3>按钮属性</h3>
+  <el-button plain>朴素按钮</el-button>
+  <el-button round>圆角按钮</el-button>
+  <el-button circle>圆</el-button>
+  <el-button disabled>禁用按钮</el-button>
+  <el-button loading>加载中</el-button>
+
+  <hr>
+  <h3>尺寸</h3>
+  <el-button size="large">大型按钮</el-button>
+  <el-button>默认按钮</el-button>
+  <el-button size="small">小型按钮</el-button>
+</template>
+
+<style scoped></style>
